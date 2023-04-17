@@ -22,10 +22,10 @@ export default function buildMakePassword ({ Id, Hash, isValidDate }) {
       * [\p{L}\p{N}\p{P}\p{S}]{8,64} match between 8 and 64 characters that consist of Unicode letters, digits, punctuation, and symbols
       * $                            end of string
       */
-      if (!/^(?=.*\d)(?=\S)[\p{L}\p{N}\p{P}\p{S}]{8,64}$/u.test(password)) {
+      if (!/^(?=.*\d)(?=\S)[\p{L}\p{N}\p{P}\p{S}]{8,64}$/u.test(passwordRaw)) {
         throw new Error('Password must be 8-64 characters long, can contain Unicode letters, digits, punctuation, and symbols with at least one digit')
       }
-      passwordHash = Hash.hashSync(password)
+      passwordHash = Hash.hashSync(passwordRaw)
       passwordRaw = null
     } else if (typeof passwordHash != 'string') {
       throw new Error('Invalid password')
