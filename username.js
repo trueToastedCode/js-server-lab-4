@@ -1,4 +1,4 @@
-export default function buildMakeUsername ({ Id }) {
+export default function buildMakeUsername ({ Id, isValidDate }) {
   return function makeUsername ({
     id = Id.createId(),
     userId,
