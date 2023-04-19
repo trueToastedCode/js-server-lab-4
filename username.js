@@ -33,6 +33,7 @@ export default function buildMakeUsername ({ Id, isValidDate }) {
     return Object.freeze({
       getId: () => id,
       getUserId: () => userId,
+      getUsername: () => username,
       getModifiedOn: () => modifiedOn
     })
   }
