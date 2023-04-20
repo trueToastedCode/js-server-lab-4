@@ -2,8 +2,8 @@ export default function buildMakeUser ({ Id, isValidDate }) {
   return function makeUser ({
     id = Id.createId(),
     createdOn = Date.now(),
-    usernameId,
-    passwordId
+    usernameId = Id.createId(),
+    passwordId = Id.createId()
   } = {}) {
     if (!Id.isValidId(id)) {
       throw new Error('Invalid id')
