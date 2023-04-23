@@ -1,4 +1,4 @@
-export default function buildMakeSession ({ Id, isValidDate }) {
+export default function buildMakeSession ({ jwt, Id, isValidDate }) {
   return function makeSession ({
     id = Id.createId(),
     userId,
@@ -41,7 +41,10 @@ export default function buildMakeSession ({ Id, isValidDate }) {
       getCreatedOn: () => createdOn,
       getLastActiveOn: () => lastActiveOn,
       getExpireAt: () => Math.min(lastActiveOn + 1.8e+6, createdOn + 8.64e+7),
-      getMaxExpireAt: () => createdOn + 8.64e+7
+      getToken: (secret) => jwt.sign({
+        exp: Math.floor(Math.min(lastActiveOn + 1.8e+6, createdOn + 8.64e+7) / 1000),
+        id
+      }, secret)
     })
   }
 }
