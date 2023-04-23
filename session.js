@@ -40,7 +40,8 @@ export default function buildMakeSession ({ Id, isValidDate }) {
       getUserId: () => userId,
       getCreatedOn: () => createdOn,
       getLastActiveOn: () => lastActiveOn,
-      getExpireAt: () => Math.min(lastActiveOn + 1.8e+6, createdOn + 8.64e+7)
+      getExpireAt: () => Math.min(lastActiveOn + 1.8e+6, createdOn + 8.64e+7),
+      getMaxExpireAt: () => createdOn + 8.64e+7
     })
   }
 }
