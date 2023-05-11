@@ -13,9 +13,9 @@ export default function makeCurrentCache ({ defaultCacheFunctions }) {
       lookUps: [ info.userId, info.username ]
     })
   }
-  function getUsername ({ id, userId, username } = {}) {
+  function getUsername (info) {
     return defaultCacheFunctions.findObjByVarious(
-      { id, userId, username }, [ 'id', 'userId', 'username' ])
+      info, [ 'id', 'userId', 'username' ])
   }
   async function removeUsername (info) {
     const result = await getUsername(info)

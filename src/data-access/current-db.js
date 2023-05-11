@@ -4,12 +4,12 @@ export default function makeCurrentDb ({ defaultDbFunctions }) {
     findUsername,
     removeUsername
   })
-  function findUsername ({ id, userId, username } = {}) {
+  function findUsername (info) {
     return defaultDbFunctions.findOneByVarious(
-      { id, userId, username }, [ 'id', 'userId', 'username' ])
+      info, [ 'id', 'userId', 'username' ])
   }
-  function removeUsername ({ id, userId, username } = {}) {
+  function removeUsername (info) {
     return defaultDbFunctions.removeOneByVarious(
-      { id, userId, username }, [ 'id', 'userId', 'username' ])
+      info, [ 'id', 'userId', 'username' ])
   }
 }
