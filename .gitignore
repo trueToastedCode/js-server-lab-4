@@ -133,3 +133,6 @@ dist
 .DS_Store
 __MACOSX
 Thumbs.db
+
+# active env
+.env

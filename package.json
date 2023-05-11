@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodeman --exec babel-node src/index.js",
+    "dev": "npm run envLocal && nodeman --exec babel-node src/index.js",
     "build": "npm run clean && babel src -d dist",
     "clean": "rimraf dist",
     "db": "babel-node ./db/index.js",
-    "start": "npm run clean && npm run build && npm run db && cd dist && node index.js",
-    "test": "npm run db && vitest"
+    "envLocal": "cp .env-local .env",
+    "envDocker": "cp .env-docker .env",
+    "start": "npm run envDocker && npm run clean && npm run build && npm run db && cd dist && node index.js",
+    "test": "npm run envLocal && npm run db && vitest"
   },
   "author": "",
   "license": "ISC",
