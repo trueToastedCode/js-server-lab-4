@@ -9,7 +9,8 @@ export default function makeMsUsernameApiAccess ({ makeBalancedAmqpAccess, defau
     removeUsername,
     cacheUsername,
     findUsername,
-    changeUsername
+    changeUsername,
+    testAddUsername
   })
   function addUsername ({ id, userId, username } = {}) {
     return defaultAmqpSend({
@@ -44,6 +45,13 @@ export default function makeMsUsernameApiAccess ({ makeBalancedAmqpAccess, defau
     return defaultAmqpSend({
       controllerName: 'changeUsername',
       args: { id, userId, username, newUsername },
+      sendRPCMessage: balancedAmqpAccess.choice()
+    })
+  }
+  function testAddUsername ({ id, userId, username } = {}) {
+    return defaultAmqpSend({
+      controllerName: 'testAddUsername',
+      args: { id, userId, username },
       sendRPCMessage: balancedAmqpAccess.choice()
     })
   }
