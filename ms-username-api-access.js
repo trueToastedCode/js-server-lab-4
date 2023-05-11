@@ -1,4 +1,4 @@
-export default function makeMsPasswordApiAccess ({ makeBalancedAmqpAccess, defaultAmqpSend }) {
+export default function makeMsUsernameApiAccess ({ makeBalancedAmqpAccess, defaultAmqpSend }) {
   const balancedAmqpAccess = makeBalancedAmqpAccess({
     urls: JSON.parse(process.env.MS_USERNAME_API_URLS),
     rpcQueue: process.env.MS_USERNAME_API_RPC_QUEUE,
