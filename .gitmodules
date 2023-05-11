@@ -46,3 +46,7 @@
 	path = src/submodules/default-controller
 	url = https://github.com/trueToastedCode/common.git
 	branch = default-controller
+[submodule "src/submodules/find-first-of-keys"]
+	path = src/submodules/find-first-of-keys
+	url = https://github.com/trueToastedCode/common.git
+	branch = find-first-of-keys
