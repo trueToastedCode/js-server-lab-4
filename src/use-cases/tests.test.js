@@ -3,7 +3,7 @@ import Id from '../submodules/Id'
 
 import { addUsername, removeUsername, cacheUsername, findUsername, changeUsername, testAddUsername } from './index'
 
-describe('#add username', () => {
+describe('#use cases', () => {
   const userId = Id.createId()
   const username = 'user123'
   let id
