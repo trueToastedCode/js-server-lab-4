@@ -14,6 +14,7 @@ export default function makeChangeUsername ({ currentDb, currentCache, findUsern
       modifiedOn: usernameEntity.getModifiedOn()
     })
     if (findCacheResult != null) {
+      const rmCacheResult = await currentCache.removeUsername({ id: usernameEntity.getId() })
       const updateCacheResult = await currentCache.setUsername({
         info: {
           id: usernameEntity.getId(),
@@ -21,10 +22,12 @@ export default function makeChangeUsername ({ currentDb, currentCache, findUsern
           username: usernameEntity.getUsername(),
           modifiedOn: usernameEntity.getModifiedOn()
         },
-        timeLeftS: process.env.USERNAME_CACHE_S,
-        unique: false
+        timeLeftS: process.env.USERNAME_CACHE_S
       })
       updateDbResult = await updateDbResult
+      if (rmCacheResult !== true) {
+        throw new Error('Cache rm failed')   
+      }
       if (updateCacheResult == null) {
         throw new Error('No cache result')  
       }
