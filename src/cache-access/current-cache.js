@@ -14,14 +14,8 @@ export default function makeCurrentCache ({ defaultCacheFunctions }) {
     })
   }
   function getUsername ({ id, userId, username } = {}) {
-    if (id != null) {
-      return defaultCacheFunctions.findObj({ id })
-    } else if (userId != null) {
-      return defaultCacheFunctions.findObj({ lookUp: userId })
-    } else if (username != null) {
-      return defaultCacheFunctions.findObj({ lookUp: username })
-    }
-    throw new Error('No id, userId or username supplied')
+    return defaultCacheFunctions.findObjByVarious(
+      { id, userId, username }, [ 'id', 'userId', 'username' ])
   }
   async function removeUsername (info) {
     const result = await getUsername(info)
