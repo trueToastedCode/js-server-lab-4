@@ -1,21 +1,27 @@
 import makeUsername from '../submodules/username-entity'
 
-export default function makeChangeUsername ({ currentDb, currentCache, findUsername }) {
+export default function makeChangeUsername ({ currentDb, currentCache, findUsername,  }) {
   return async function changeUsername ({ id, userId, username, newUsername } = {}) {
     if (newUsername == null) {
       throw new Error('No new username supplied')
     }
-    const findDbResult = await findUsername({ id, userId, username })
-    const usernameEntity = makeUsername({ ...findDbResult, modifiedOn: undefined, username: newUsername })
-    const findCacheResult = await currentCache.getUsername({ id: findDbResult.id })
-    let updateDbResult = currentDb.updateOne({
-      id: usernameEntity.getId(),
-      username: usernameEntity.getUsername(),
-      modifiedOn: usernameEntity.getModifiedOn()
-    })
-    if (findCacheResult != null) {
-      const rmCacheResult = await currentCache.removeUsername({ id: usernameEntity.getId() })
-      const updateCacheResult = await currentCache.setUsername({
+    const findResult = await findUsername({ id, userId, username })
+    const usernameEntity = makeUsername({ ...findResult, modifiedOn: undefined, username: newUsername })
+    const results = await Promise.all([
+      currentCache.removeUsername({
+        id: usernameEntity.getId()
+      }),
+      currentDb.updateOne({
+        id: usernameEntity.getId(),
+        username: usernameEntity.getUsername(),
+        modifiedOn: usernameEntity.getModifiedOn()
+      })
+    ])
+    if (results[1] == null) {
+      throw new Error('No db result')
+    }
+    if (results[0]) {
+      const setCacheResult = await currentCache.setUsername({
         info: {
           id: usernameEntity.getId(),
           userId: usernameEntity.getUserId(),
@@ -24,19 +30,10 @@ export default function makeChangeUsername ({ currentDb, currentCache, findUsern
         },
         timeLeftS: process.env.USERNAME_CACHE_S
       })
-      updateDbResult = await updateDbResult
-      if (rmCacheResult !== true) {
-        throw new Error('Cache rm failed')   
+      if (setCacheResult == null) {
+        throw new Error('No cache result')
       }
-      if (updateCacheResult == null) {
-        throw new Error('No cache result')  
-      }
-    } else {
-      updateDbResult = await updateDbResult
     }
-    if (updateDbResult == null) {
-      throw new Error('No db result')
-    }
-    return updateDbResult
+    return results[1]
   }
 }
