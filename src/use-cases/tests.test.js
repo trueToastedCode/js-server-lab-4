@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import Id from '../submodules/Id'
 
-import { addUsername, removeUsername, cacheUsername, findUsername, changeUsername } from './index'
+import { addUsername, removeUsername, cacheUsername, findUsername, changeUsername, testAddUsername } from './index'
 
 describe('#add username', () => {
   const userId = Id.createId()
@@ -23,6 +23,18 @@ describe('#add username', () => {
     expect(result.userId).toBe(userId)
     expect(result.username).toBe(username)
     expect(result.modifiedOn).toBeTypeOf('number')
+  })
+
+  test('test add exisitng usename', async () => {
+    const error = await new Promise(async (resolve, reject) => {
+      try {
+        await testAddUsername({ userId, username })
+        reject('No error')
+      } catch (e) {
+        resolve(e.message)
+      }
+    })
+    expect(error).toBeDefined()
   })
 
   test('remove username by id', async () => {
