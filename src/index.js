@@ -14,6 +14,6 @@ healthCheckServer({ getIsHealthy: () => isServiceHealthy })
 listenReactAmqp({
   url: process.env.MS_CURRENT_API_RABBITMQ_URL,
   queue: process.env.MS_CURRENT_API_RABBITMQ_QUEUE,
-  controller: currentControllers,
+  controllers: currentControllers,
   healthyCallback: () => isServiceHealthy = true
 })
