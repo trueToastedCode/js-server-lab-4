@@ -1,0 +1,48 @@
+[submodule "src/submodules/base-db-access"]
+	path = src/submodules/base-db-access
+	url = https://github.com/trueToastedCode/mongodb.git
+	branch = base-db-access
+[submodule "src/submodules/default-db-functions"]
+	path = src/submodules/default-db-functions
+	url = https://github.com/trueToastedCode/mongodb.git
+	branch = default-db-functions
+[submodule "src/submodules/rename-property"]
+	path = src/submodules/rename-property
+	url = https://github.com/trueToastedCode/common.git
+	branch = rename-property
+[submodule "src/submodules/Id"]
+	path = src/submodules/Id
+	url = https://github.com/trueToastedCode/common.git
+	branch = Id
+[submodule "src/submodules/username-entity"]
+	path = src/submodules/username-entity
+	url = https://github.com/trueToastedCode/js-server-lab-4.git
+	branch = username-entity
+[submodule "src/submodules/is-valid-date"]
+	path = src/submodules/is-valid-date
+	url = https://github.com/trueToastedCode/common.git
+	branch = is-valid-date
+[submodule "src/submodules/base-cache-access"]
+	path = src/submodules/base-cache-access
+	url = https://github.com/trueToastedCode/redis.git
+	branch = base-cache-access
+[submodule "src/submodules/default-cache-functions"]
+	path = src/submodules/default-cache-functions
+	url = https://github.com/trueToastedCode/redis.git
+	branch = default-cache-functions
+[submodule "src/submodules/listen-react-amqp"]
+	path = src/submodules/listen-react-amqp
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = listen-react-amqp
+[submodule "src/submodules/amqp-callback"]
+	path = src/submodules/amqp-callback
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = amqp-callback
+[submodule "src/submodules/healthcheck-server"]
+	path = src/submodules/healthcheck-server
+	url = https://github.com/trueToastedCode/common.git
+	branch = healthcheck-server
+[submodule "src/submodules/default-controller"]
+	path = src/submodules/default-controller
+	url = https://github.com/trueToastedCode/common.git
+	branch = default-controller
