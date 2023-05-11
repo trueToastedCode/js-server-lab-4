@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run envLocal && nodeman --exec babel-node src/index.js",
+    "dev": "npm run envLocal && npm run db && nodemon --exec babel-node src/index.js",
     "build": "npm run clean && babel src -d dist",
     "clean": "rimraf dist",
     "db": "babel-node ./db/index.js",
