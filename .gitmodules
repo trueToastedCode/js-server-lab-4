@@ -50,3 +50,7 @@
 	path = src/submodules/find-first-of-keys
 	url = https://github.com/trueToastedCode/common.git
 	branch = find-first-of-keys
+[submodule "src/submodules/custom-error"]
+	path = src/submodules/custom-error
+	url = https://github.com/trueToastedCode/common.git
+	branch = custom-error
