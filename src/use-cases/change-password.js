@@ -1,9 +1,9 @@
 import makePassword from '../submodules/password-entity'
 
-export default function makeChangePassword ({ currentDb, findPassword }) {
+export default function makeChangePassword ({ currentDb, findPassword, CustomError }) {
   return async function changePassword ({ id, userId, password } = {}) {
     if (password == null) {
-      throw new Error('No password supplied')
+      throw new CustomError('No password supplied', 400)
     }
     const findResult = await findPassword({ id, userId })
     const passwordEntity = makePassword({ ...findResult, passwordRaw: password, modifiedOn: undefined })

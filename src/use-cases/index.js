@@ -1,4 +1,5 @@
 import { renameProperty } from '../submodules/rename-property'
+import CustomError from '../submodules/custom-error'
 
 import currentDb from '../data-access'
 
@@ -12,9 +13,9 @@ import makeFindPassword from './find-password'
 const testAddPassword = makeTestAddPassword()
 const removePassword = makeRemovePassword({ currentDb })
 const addPassword = makeAddPassword({ currentDb })
-const verifyPassword = makeVerifyPassword({ currentDb, renameProperty })
+const verifyPassword = makeVerifyPassword({ currentDb, renameProperty, CustomError })
 const findPassword = makeFindPassword({ currentDb })
-const changePassword = makeChangePassword({ currentDb, findPassword })
+const changePassword = makeChangePassword({ currentDb, findPassword, CustomError })
 
 const currentService = Object.freeze({
   testAddPassword,
