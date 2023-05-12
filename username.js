@@ -1,4 +1,4 @@
-export default function buildMakeUsername ({ Id, isValidDate }) {
+export default function buildMakeUsername ({ Id, isValidDate, CustomError }) {
   return function makeUsername ({
     id = Id.createId(),
     userId,
@@ -6,11 +6,11 @@ export default function buildMakeUsername ({ Id, isValidDate }) {
     modifiedOn = Date.now()
   } = {}) {
     if (!Id.isValidId(id)) {
-      throw new Error('Invalid id')
+      throw new CustomError('Invalid id', 400)
     }
 
     if (!Id.isValidId(userId)) {
-      throw new Error('Invalid user id')
+      throw new CustomError('Invalid user id', 400)
     }
 
     username = username.trim()
@@ -23,11 +23,11 @@ export default function buildMakeUsername ({ Id, isValidDate }) {
     * $/u           End of the string
     */
     if (!/^(?=.{2,20}$)[\p{L}\p{N}\-_]+$/u.test(username)) {
-      throw new Error(`Username must be 2-20 characters long, can contain Unicode letters or digits but no whitespace, punctuation or symbols with the exception of underscore and minus`)
+      throw new CustomError(`Username must be 2-20 characters long, can contain Unicode letters or digits but no whitespace, punctuation or symbols with the exception of underscore and minus`, 400)
     }
 
     if (!isValidDate(modifiedOn)) {
-      throw new Error('Invalid modified on date')
+      throw new CustomError('Invalid modified on date', 400)
     }
 
     return Object.freeze({
