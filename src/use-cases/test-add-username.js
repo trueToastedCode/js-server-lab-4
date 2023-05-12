@@ -1,6 +1,6 @@
 import makeUsername from '../submodules/username-entity'
 
-export default function makeTestAddUsername ({ findUsername }) {
+export default function makeTestAddUsername ({ findUsername, CustomError }) {
   return async function testAddUsername ({ id, userId, username } = {}) {
     const usernameEntity = makeUsername({ id: id ?? undefined, userId, username })
     let exists
@@ -11,7 +11,7 @@ export default function makeTestAddUsername ({ findUsername }) {
       exists = false
     }
     if (exists) {
-      throw new Error('Username already exists')
+      throw new CustomError('Username already exists', 400)
     }
   }
 }

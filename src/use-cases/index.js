@@ -15,7 +15,7 @@ const removeUsername = makeRemoveUsername({ currentDb, currentCache })
 const findUsername = makeFindUsername({ currentDb, currentCache })
 const cacheUsername = makeCacheUsername({ currentCache, findUsername })
 const changeUsername = makeChangeUsername({ currentDb, currentCache, findUsername, CustomError })
-const testAddUsername = makeTestAddUsername({ findUsername })
+const testAddUsername = makeTestAddUsername({ findUsername, CustomError })
 
 const currentService = Object.freeze({
   addUsername,
