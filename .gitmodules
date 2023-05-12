@@ -46,3 +46,7 @@
 	path = src/submodules/default-controller
 	url = https://github.com/trueToastedCode/common.git
 	branch = default-controller
+[submodule "src/submodules/custom-error"]
+	path = src/submodules/custom-error
+	url = https://github.com/trueToastedCode/common.git
+	branch = custom-error
