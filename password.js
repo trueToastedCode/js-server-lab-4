@@ -1,4 +1,4 @@
-export default function buildMakePassword ({ Id, Hash, isValidDate }) {
+export default function buildMakePassword ({ Id, Hash, isValidDate, CustomError }) {
   return function makePassword ({
     id = Id.createId(),
     userId,
@@ -7,11 +7,11 @@ export default function buildMakePassword ({ Id, Hash, isValidDate }) {
     modifiedOn = Date.now()
   } = {}) {
     if (!Id.isValidId(id)) {
-      throw new Error('Invalid id')
+      throw new CustomError('Invalid id', 400)
     }
 
     if (!Id.isValidId(userId)) {
-      throw new Error('Invalid user id')
+      throw new CustomError('Invalid user id', 400)
     }
    
     if (passwordRaw != null) {
@@ -23,18 +23,18 @@ export default function buildMakePassword ({ Id, Hash, isValidDate }) {
       * $                            end of string
       */
       if (!/^(?=.*\d)(?=\S)[\p{L}\p{N}\p{P}\p{S}]{8,64}$/u.test(passwordRaw)) {
-        throw new Error('Password must be 8-64 characters long, can contain Unicode letters, digits, punctuation, and symbols with at least one digit')
+        throw new CustomError('Password must be 8-64 characters long, can contain Unicode letters, digits, punctuation, and symbols with at least one digit', 400)
       }
       passwordHash = Hash.hashSync(passwordRaw)
       passwordRaw = null
     } else if (typeof passwordHash != 'string') {
-      throw new Error('Invalid password')
+      throw new CustomError('Invalid password', 400)
     } else if (passwordHash.length === 0) {
-      throw new Error('No password supplied')
+      throw new CustomError('No password supplied', 400)
     }
 
     if (!isValidDate(modifiedOn)) {
-      throw new Error('Invalid modified on date')
+      throw new CustomError('Invalid modified on date', 400)
     }
 
     return Object.freeze({
