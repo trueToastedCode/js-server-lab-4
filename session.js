@@ -1,4 +1,4 @@
-export default function makeBuildMakeSession ({ Id, isValidDate }) {
+export default function makeBuildMakeSession ({ Id, isValidDate, CustomError }) {
   return function buildMakeSession ({ Token }) {
     return function makeSession ({
       id = Id.createId(),
@@ -7,19 +7,19 @@ export default function makeBuildMakeSession ({ Id, isValidDate }) {
       lastActiveOn = Date.now()
     } = {}) {
       if (!Id.isValidId(id)) {
-        throw new Error('Invalid id')
+        throw new CustomError('Invalid id', 400)
       }
   
       if (!Id.isValidId(userId)) {
-        throw new Error('Invalid user id')
+        throw new CustomError('Invalid user id', 400)
       }
   
       if (!isValidDate(createdOn)) {
-        throw new Error('Invalid created on date')
+        throw new CustomError('Invalid created on date', 400)
       }
   
       if (!isValidDate(lastActiveOn)) {
-        throw new Error('Invalid last active on date')
+        throw new CustomError('Invalid last active on date', 400)
       }
   
       const now = Date.now()
@@ -28,12 +28,12 @@ export default function makeBuildMakeSession ({ Id, isValidDate }) {
   
       if (msSinceLastActive > 1.8e+6) {
         // more than 30 minutes
-        throw new Error('Session inactive for more than 30 minutes')
+        throw new CustomError('Session inactive for more than 30 minutes', 400)
       }
   
       if (lastActiveOn - createdOn > 8.64e+7) {
         // session older than one day
-        throw new Error('Session max age of one day exceeded')
+        throw new CustomError('Session max age of one day exceeded', 400)
       }
   
       return Object.freeze({
