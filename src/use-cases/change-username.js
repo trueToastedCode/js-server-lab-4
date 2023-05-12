@@ -1,9 +1,9 @@
 import makeUsername from '../submodules/username-entity'
 
-export default function makeChangeUsername ({ currentDb, currentCache, findUsername,  }) {
+export default function makeChangeUsername ({ currentDb, currentCache, findUsername, CustomError }) {
   return async function changeUsername ({ id, userId, username, newUsername } = {}) {
     if (newUsername == null) {
-      throw new Error('No new username supplied')
+      throw new CustomError('No new username supplied', 400)
     }
     const findResult = await findUsername({ id, userId, username })
     const usernameEntity = makeUsername({ ...findResult, modifiedOn: undefined, username: newUsername })

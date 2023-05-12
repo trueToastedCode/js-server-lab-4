@@ -1,3 +1,5 @@
+import CustomError from '../submodules/custom-error'
+
 import currentDb from '../data-access'
 import currentCache from '../cache-access'
 
@@ -12,7 +14,7 @@ const addUsername = makeAddUsername({ currentDb })
 const removeUsername = makeRemoveUsername({ currentDb, currentCache })
 const findUsername = makeFindUsername({ currentDb, currentCache })
 const cacheUsername = makeCacheUsername({ currentCache, findUsername })
-const changeUsername = makeChangeUsername({ currentDb, currentCache, findUsername })
+const changeUsername = makeChangeUsername({ currentDb, currentCache, findUsername, CustomError })
 const testAddUsername = makeTestAddUsername({ findUsername })
 
 const currentService = Object.freeze({
