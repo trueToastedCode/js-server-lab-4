@@ -42,3 +42,7 @@
 	path = src/submodules/base-db-access
 	url = https://github.com/trueToastedCode/mongodb.git
 	branch = base-db-access
+[submodule "src/submodules/default-controller"]
+	path = src/submodules/default-controller
+	url = https://github.com/trueToastedCode/common.git
+	branch = default-controller
