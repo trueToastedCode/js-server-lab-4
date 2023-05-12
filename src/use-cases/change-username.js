@@ -20,6 +20,9 @@ export default function makeChangeUsername ({ currentDb, currentCache, findUsern
     if (results[1] == null) {
       throw new Error('No db result')
     }
+    if (results[0] == null) {
+      throw new Error('No cache result')
+    }
     if (results[0]) {
       const setCacheResult = await currentCache.setUsername({
         info: {

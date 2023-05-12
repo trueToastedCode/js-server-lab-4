@@ -7,6 +7,9 @@ export default function makeRemoveUsername ({ currentDb, currentCache }) {
     if (results[0] == null) {
       throw new Error('No db result')
     }
+    if (results[1] == null) {
+      throw new Error('No cache result')
+    }
     return results[0]
   }
 }
