@@ -1,8 +1,8 @@
 export default function makeMsSessionApiAccess ({ makeBalancedAmqpAccess, defaultAmqpSend }) {
   const balancedAmqpAccess = makeBalancedAmqpAccess({
-    urls: JSON.parse(process.env.MS_USERNAME_API_URLS),
-    rpcQueue: process.env.MS_USERNAME_API_RPC_QUEUE,
-    replyQueue: process.env.MS_USERNAME_API_REPLY_QUEUE
+    urls: JSON.parse(process.env.MS_SESSION_API_URLS),
+    rpcQueue: process.env.MS_SESSION_API_RPC_QUEUE,
+    replyQueue: process.env.MS_SESSION_API_REPLY_QUEUE
   })
   return Object.freeze({
     findSessions,
