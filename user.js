@@ -1,4 +1,4 @@
-export default function buildMakeUser ({ Id, isValidDate }) {
+export default function buildMakeUser ({ Id, isValidDate, CustomError }) {
   return function makeUser ({
     id = Id.createId(),
     createdOn = Date.now(),
@@ -6,19 +6,19 @@ export default function buildMakeUser ({ Id, isValidDate }) {
     passwordId = Id.createId()
   } = {}) {
     if (!Id.isValidId(id)) {
-      throw new Error('Invalid id')
+      throw new CustomError('Invalid id', 400)
     }
 
     if (!isValidDate(createdOn)) {
-      throw new Error('Invalid created on date')
+      throw new CustomError('Invalid created on date', 400)
     }
 
     if (!Id.isValidId(usernameId)) {
-      throw new Error('Invalid username id')
+      throw new CustomError('Invalid username id', 400)
     }
 
     if (!Id.isValidId(passwordId)) {
-      throw new Error('Invalid password id')
+      throw new CustomError('Invalid password id', 400)
     }
 
     return Object.freeze({
