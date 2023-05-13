@@ -7,7 +7,7 @@ const continueSession = makeDefaultController({ ucFunc: currentService.continueS
 const findSession = makeDefaultController({ ucFunc: currentService.findSession })
 const removeSession = makeDefaultController({ ucFunc: currentService.removeSession })
 const removeSessions = makeDefaultController({ ucFunc: currentService.removeSessions })
-const addSession = makeDefaultController({ ucFunc: currentService.addSession })
+const addSession = makeDefaultController({ ucFunc: currentService.addSession, statusCode: 201 })
 
 const currentControllers = Object.freeze({
   findSessions,
