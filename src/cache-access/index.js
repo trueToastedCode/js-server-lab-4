@@ -5,7 +5,10 @@ import makeCurrentCache from './current-cache'
 
 const makeCache = buildMakeCache({ url: process.env.MS_CURRENT_API_CACHE_URL })
 
-const defaultCacheFunctions = makeDefaultCacheFunctions({ makeCache })
+const defaultCacheFunctions = makeDefaultCacheFunctions({
+  makeCache,
+  prefix: process.env.MS_CURRENT_API_CACHE_PREFIX
+})
 
 const currentCache = makeCurrentCache({ defaultCacheFunctions })
 
