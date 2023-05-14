@@ -8,6 +8,7 @@ const addPassword = makeDefaultController({ ucFunc: currentService.addPassword, 
 const changePassword = makeDefaultController({ ucFunc: currentService.changePassword })
 const verifyPassword = makeDefaultController({ ucFunc: currentService.verifyPassword })
 const findPassword = makeDefaultController({ ucFunc: currentService.findPassword })
+const cachePassword = makeDefaultController({ ucFunc: currentService.cachePassword })
 
 const currentControllers = Object.freeze({
   testAddPassword,
@@ -15,7 +16,8 @@ const currentControllers = Object.freeze({
   addPassword,
   changePassword,
   verifyPassword,
-  findPassword
+  findPassword,
+  cachePassword
 })
 
 export default currentControllers
@@ -25,5 +27,6 @@ export {
   addPassword,
   changePassword,
   verifyPassword,
-  findPassword
+  findPassword,
+  cachePassword
 }

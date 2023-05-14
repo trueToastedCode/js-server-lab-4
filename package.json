@@ -29,6 +29,7 @@
     "amqplib": "^0.10.3",
     "babel-plugin-inline-dotenv": "^1.7.0",
     "bcrypt": "^5.1.0",
-    "mongodb": "^5.2.0"
+    "mongodb": "^5.2.0",
+    "redis": "^4.6.6"
   }
 }

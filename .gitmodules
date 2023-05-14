@@ -50,3 +50,11 @@
 	path = src/submodules/custom-error
 	url = https://github.com/trueToastedCode/common.git
 	branch = custom-error
+[submodule "src/submodules/base-cache-access"]
+	path = src/submodules/base-cache-access
+	url = https://github.com/trueToastedCode/redis.git
+	branch = base-cache-access
+[submodule "src/submodules/default-cache-functions"]
+	path = src/submodules/default-cache-functions
+	url = https://github.com/trueToastedCode/redis.git
+	branch = default-cache-functions

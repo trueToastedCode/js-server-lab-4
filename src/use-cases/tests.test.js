@@ -7,7 +7,8 @@ import {
   addPassword,
   changePassword,
   verifyPassword,
-  findPassword
+  findPassword,
+  cachePassword
 } from './index'
 
 describe('#use cases', () => {
@@ -81,6 +82,13 @@ describe('#use cases', () => {
       }
     })
     expect(error).toBeDefined()
+  })
+
+  test('cache password', async () => {
+    const result = await cachePassword({ id })
+    expect(result.id).toBe(id)
+    expect(result.userId).toBe(userId)
+    expect(result.modifiedOn).toBeTypeOf('number')
   })
 
   test('remove password', async () => {
