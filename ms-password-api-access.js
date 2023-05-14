@@ -10,7 +10,8 @@ export default function makeMsPasswordApiAccess ({ makeBalancedAmqpAccess, defau
     addPassword,
     changePassword,
     verifyPassword,
-    findPassword
+    findPassword,
+    cachePassword
   })
   function testAddPassword ({ id, userId, password } = {}) {
     return defaultAmqpSend({
@@ -51,6 +52,13 @@ export default function makeMsPasswordApiAccess ({ makeBalancedAmqpAccess, defau
   function findPassword ({ id, userId } = {}) {
     return defaultAmqpSend({
       controllerName: 'findPassword',
+      args: { id, userId },
+      sendRPCMessage: balancedAmqpAccess.choice()
+    })
+  }
+  function cachePassword ({ id, userId } = {}) {
+    return defaultAmqpSend({
+      controllerName: 'cachePassword',
       args: { id, userId },
       sendRPCMessage: balancedAmqpAccess.choice()
     })
