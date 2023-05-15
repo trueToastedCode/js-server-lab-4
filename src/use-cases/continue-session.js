@@ -25,6 +25,6 @@ export default function makeContinueSession ({ currentDb, currentCache, makeSess
     if (reslts[1] === null) {
       throw new Error('No cache result')
     }
-    return { ...reslts[0], token: sessionEntity.getToken() }
+    return { ...reslts[1], token: sessionEntity.getToken() }
   }
 }
