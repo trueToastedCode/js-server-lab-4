@@ -3,7 +3,7 @@ import makeDefaultController from '../submodules/default-controller'
 import currentService from '../use-cases'
 
 const cacheUser = makeDefaultController({ ucFunc: currentService.cacheUser })
-const addUser = makeDefaultController({ ucFunc: currentService.addUser })
+const addUser = makeDefaultController({ ucFunc: currentService.addUser, statusCode: 201 })
 const removeUser = makeDefaultController({ ucFunc: currentService.removeUser })
 const findUser = makeDefaultController({ ucFunc: currentService.findUser })
 const testAddUser = makeDefaultController({ ucFunc: currentService.testAddUser })

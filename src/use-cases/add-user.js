@@ -1,12 +1,12 @@
 import makeUser from '../submodules/user-entity'
 
-export default function makeAddUser ({ currentDb, msPasswordApiAccess, msUsernameApiAccess, allSettledAndClean }) {
+export default function makeAddUser ({ currentDb, msPasswordApiAccess, msUsernameApiAccess, allSettledAndClean, CustomError }) {
   return async function addUser ({ username, password } = {}) {
     if (username == null) {
-      throw new Error('No username supplied')
+      throw new CustomError('No username supplied', 400)
     }
     if (password == null) {
-      throw new Error('No password supplied')
+      throw new CustomError('No password supplied', 400)
     }
     const userEntity = makeUser()
     const results = await allSettledAndClean(
