@@ -19,6 +19,6 @@ export default function makecacheUser ({ currentDb, currentCache, msPasswordApiA
       msUsernameApiAccess.cacheUsername({ id: findResult.usernameId }),
       msPasswordApiAccess.cachePassword({ id: findResult.passwordId })
     ])
-    return results[0]
+    return { ...results[0], username: results[1], password: results[2] }
   }
 }
