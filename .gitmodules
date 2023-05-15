@@ -1,0 +1,88 @@
+[submodule "src/submodules/amqp-callback"]
+	path = src/submodules/amqp-callback
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = amqp-callback
+[submodule "src/submodules/listen-react-amqp"]
+	path = src/submodules/listen-react-amqp
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = listen-react-amqp
+[submodule "src/submodules/healthcheck-server"]
+	path = src/submodules/healthcheck-server
+	url = https://github.com/trueToastedCode/common.git
+	branch = healthcheck-server
+[submodule "src/submodules/base-amqp-access"]
+	path = src/submodules/base-amqp-access
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = base-amqp-access
+[submodule "src/submodules/balanced-amqp-access"]
+	path = src/submodules/balanced-amqp-access
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = balanced-amqp-access
+[submodule "src/submodules/ms-password-api-access"]
+	path = src/submodules/ms-password-api-access
+	url = https://github.com/trueToastedCode/js-server-lab-4.git
+	branch = ms-password-api-access
+[submodule "src/submodules/ms-username-api-access"]
+	path = src/submodules/ms-username-api-access
+	url = https://github.com/trueToastedCode/js-server-lab-4.git
+	branch = ms-username-api-access
+[submodule "src/submodules/default-amqp-send"]
+	path = src/submodules/default-amqp-send
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = default-amqp-send
+[submodule "src/submodules/Id"]
+	path = src/submodules/Id
+	url = https://github.com/trueToastedCode/common.git
+	branch = Id
+[submodule "src/submodules/timeout"]
+	path = src/submodules/timeout
+	url = https://github.com/trueToastedCode/common.git
+	branch = timeout
+[submodule "src/submodules/all-settled-and-clean"]
+	path = src/submodules/all-settled-and-clean
+	url = https://github.com/trueToastedCode/common.git
+	branch = all-settled-and-clean
+[submodule "src/submodules/user-entity"]
+	path = src/submodules/user-entity
+	url = https://github.com/trueToastedCode/js-server-lab-4.git
+	branch = user-entity
+[submodule "src/submodules/base-db-access"]
+	path = src/submodules/base-db-access
+	url = https://github.com/trueToastedCode/mongodb.git
+	branch = base-db-access
+[submodule "src/submodules/default-db-functions"]
+	path = src/submodules/default-db-functions
+	url = https://github.com/trueToastedCode/mongodb.git
+	branch = default-db-functions
+[submodule "src/submodules/find-first-of-keys"]
+	path = src/submodules/find-first-of-keys
+	url = https://github.com/trueToastedCode/common.git
+	branch = find-first-of-keys
+[submodule "src/submodules/rename-property"]
+	path = src/submodules/rename-property
+	url = https://github.com/trueToastedCode/common.git
+	branch = rename-property
+[submodule "src/submodules/default-controller"]
+	path = src/submodules/default-controller
+	url = https://github.com/trueToastedCode/common.git
+	branch = default-controller
+[submodule "src/submodules/custom-error"]
+	path = src/submodules/custom-error
+	url = https://github.com/trueToastedCode/common.git
+	branch = custom-error
+[submodule "src/submodules/process-api-result"]
+	path = src/submodules/process-api-result
+	url = https://github.com/trueToastedCode/amqp.git
+	branch = process-api-result
+[submodule "src/submodules/base-cache-access"]
+	path = src/submodules/base-cache-access
+	url = https://github.com/trueToastedCode/redis.git
+	branch = base-cache-access
+[submodule "src/submodules/default-cache-functions"]
+	path = src/submodules/default-cache-functions
+	url = https://github.com/trueToastedCode/redis.git
+	branch = default-cache-functions
+[submodule "src/submodules/is-valid-date"]
+	path = src/submodules/is-valid-date
+	url = https://github.com/trueToastedCode/common.git
+	branch = is-valid-date
