@@ -22,7 +22,8 @@ export default function makeMsUserApiAccess ({ makeBalancedAmqpAccess, defaultAm
     return defaultAmqpSend({
       controllerName: 'addUser',
       args: { username, password },
-      sendRPCMessage: balancedAmqpAccess.choice()
+      sendRPCMessage: balancedAmqpAccess.choice(),
+      expectedStatusCode: 201
     })
   }
   function removeUser ({ id, usernameId, passwordId } = {}) {
