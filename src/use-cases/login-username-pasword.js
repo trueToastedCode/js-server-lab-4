@@ -6,21 +6,23 @@ export default function makeLoginUsernamePassword ({ currentDb, currentCache, ms
     if (password == null) {
       throw new CustomError('No password supplied', 400)
     }
-    const findUsernameResult = await msUsernameApiAccess.findUsername({ username })
-    if (findUsernameResult == null) {
+    let findUsernameResult
+    try {
+      findUsernameResult = await msUsernameApiAccess.findUsername({ username })
+    } catch (e) {
       throw new CustomError('Username not found or password wrong', 400)
     }
     const results = await allSettledAndClean([
       (async () => {
         const result = await currentCache.getUser({ id: findUsernameResult.userId }) ?? await currentDb.findUser({ id: findUsernameResult.userId })
         if (result == null) {
-          throw new Error('User not found')
+          throw new CustomError('Username not found or password wrong', 400)
         }
         return result
       })(),
       (async () => {
         try {
-          return await msPasswordApiAccess.verifyPassword({ userId: findUsernameResult.userId })
+          return await msPasswordApiAccess.verifyPassword({ userId: findUsernameResult.userId, password })
         } catch (e) {
           throw new CustomError('Username not found or password wrong', 400)
         }
