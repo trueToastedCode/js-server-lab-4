@@ -1,4 +1,4 @@
-import { renameProperty } from '../submodules/rename-property'
+import { renameProperty, copyRenameProperty } from '../submodules/rename-property'
 import CustomError from '../submodules/custom-error'
 
 import currentDb from '../data-access'
@@ -14,7 +14,7 @@ import makeCachePassword from './cache-password'
 
 const removePassword = makeRemovePassword({ currentDb, currentCache })
 const addPassword = makeAddPassword({ currentDb })
-const verifyPassword = makeVerifyPassword({ currentDb, renameProperty, CustomError })
+const verifyPassword = makeVerifyPassword({ currentDb, currentCache, copyRenameProperty, CustomError })
 const findPassword = makeFindPassword({ currentDb, currentCache })
 const testAddPassword = makeTestAddPassword({ findPassword })
 const changePassword = makeChangePassword({ currentDb, currentCache, CustomError })
