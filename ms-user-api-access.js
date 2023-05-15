@@ -19,7 +19,7 @@ export default function makeMsUserApiAccess ({ makeBalancedAmqpAccess, defaultAm
       sendRPCMessage: balancedAmqpAccess.choice()
     })
   }
-  function addUser ({ username, password } = {}) {
+  function addUser ({ username, password }) {
     return defaultAmqpSend({
       controllerName: 'addUser',
       args: { username, password },
@@ -41,14 +41,14 @@ export default function makeMsUserApiAccess ({ makeBalancedAmqpAccess, defaultAm
       sendRPCMessage: balancedAmqpAccess.choice()
     })
   }
-  function testAddUser ({ username, password } = {}) {
+  function testAddUser ({ username, password }) {
     return defaultAmqpSend({
       controllerName: 'testAddUser',
       args: { username, password },
       sendRPCMessage: balancedAmqpAccess.choice()
     })
   }
-  function loginUsernamePassword ({ username, password } = {}) {
+  function loginUsernamePassword ({ username, password }) {
     return defaultAmqpSend({
       controllerName: 'loginUsernamePassword',
       args: { username, password },
