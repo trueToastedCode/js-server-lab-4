@@ -18,7 +18,13 @@ export default function makeLoginUsernamePassword ({ currentDb, currentCache, ms
         }
         return result
       })(),
-      msPasswordApiAccess.verifyPassword({ userId: findUsernameResult.userId })
+      (async () => {
+        try {
+          return await msPasswordApiAccess.verifyPassword({ userId: findUsernameResult.userId })
+        } catch (e) {
+          throw new CustomError('Username not found or password wrong', 400)
+        }
+      })()
     ])
     const addSessionResult = await msSessionApiAccess.addSession({ userId: findUsernameResult.userId })
     return {
