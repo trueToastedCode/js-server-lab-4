@@ -7,13 +7,15 @@ const addUser = makeDefaultController({ ucFunc: currentService.addUser })
 const removeUser = makeDefaultController({ ucFunc: currentService.removeUser })
 const findUser = makeDefaultController({ ucFunc: currentService.findUser })
 const testAddUser = makeDefaultController({ ucFunc: currentService.testAddUser })
+const loginUsernamePassword = makeDefaultController({ ucFunc: currentService.loginUsernamePassword })
 
 const currentControllers = Object.freeze({
   cacheUser,
   addUser,
   removeUser,
   findUser,
-  testAddUser
+  testAddUser,
+  loginUsernamePassword
 })
 
 export default currentControllers
@@ -22,5 +24,6 @@ export {
   addUser,
   removeUser,
   findUser,
-  testAddUser
+  testAddUser,
+  loginUsernamePassword
 }

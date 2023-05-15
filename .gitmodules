@@ -86,3 +86,7 @@
 	path = src/submodules/is-valid-date
 	url = https://github.com/trueToastedCode/common.git
 	branch = is-valid-date
+[submodule "src/submodules/ms-session-api-access"]
+	path = src/submodules/ms-session-api-access
+	url = https://github.com/trueToastedCode/js-server-lab-4.git
+	branch = ms-session-api-access
